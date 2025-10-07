@@ -7,9 +7,6 @@ const rl = readline.createInterface ({
     output: process.stdout
 });
 
-let usuários = [];
-let tarefas = [];
-
 function mostrarMenu() {
     console.log(`GERENCIADOR DE TAREFAS
          1. Cadastrar usuários
