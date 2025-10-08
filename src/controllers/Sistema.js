@@ -6,4 +6,5 @@ export class Gerenciador {
     this.usuarios = [];
     this.tarefas = [];
   }
+
 }

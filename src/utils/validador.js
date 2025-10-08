@@ -1,6 +1,5 @@
-
 export function validarUsuario(nome, email) {
-  if (!nome || nome.trim() === "") {
+  if (typeof nome !== "string" || nome.trim() === "") {
     throw new Error("❌ O nome do usuário é obrigatório!");
   }
 
@@ -8,8 +7,9 @@ export function validarUsuario(nome, email) {
     throw new Error("❌ O email do usuário é obrigatório!");
   }
 
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   // validação simples: tem que conter "@" e "."
-  if (!email.includes("@") || !email.includes(".")) {
+  if (!emailRegex.test(email)) {
     throw new Error("❌ O email informado é inválido!");
   }
 
@@ -17,11 +17,11 @@ export function validarUsuario(nome, email) {
 }
 
 export function validarTarefa(titulo, descricao) {
-  if (!titulo || titulo.trim() === "") {
+  if (typeof titulo !== 'string' || titulo.trim() === "") {
     throw new Error("❌ O título da tarefa é obrigatório!");
   }
 
-  if (descricao && descricao.length > 200) {
+  if (typeof descricao !== "string" && descricao.length > 200) {
     throw new Error("❌ A descrição não pode ter mais de 200 caracteres!");
   }
 
