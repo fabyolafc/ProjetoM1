@@ -28,6 +28,22 @@ export class Gerenciador {
     return novaTarefa;
   }
 
-  
+  listarUsuarios() {
+    console.log('\n=== Usuários cadastrados ===');
+    if (this.usuarios.length === 0) {
+      console.log('Nenhum usuário cadastrado.');
+    } else {
+      this.usuarios.forEach(u => console.log(`ID: ${u.id} | Nome: ${u.nome} | Email: ${u.email}`));
+    }
+  }
+
+  listarTarefas() {
+    console.log('\n=== Tarefas cadastradas ===');
+    if (this.tarefas.length === 0) {
+      console.log('Nenhuma tarefa cadastrada.');
+    } else {
+      this.tarefas.forEach(t => console.log(`ID: ${t.id} | Título: ${t.titulo} | Usuário ID: ${t.usuarioId}`));
+    }
+  }
 
 }
