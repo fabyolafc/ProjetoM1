@@ -1,10 +1,33 @@
-import { Usuario } from "../models/Usuario";
-import { Tarefa } from "../models/Tarefa";
+import { Usuario } from "../models/Usuario.js";
+import { Tarefa } from "../models/Tarefa.js";
+import { validarUsuario, validarTarefa } from "../utils/validador.js";
 
 export class Gerenciador {
   constructor() {
     this.usuarios = [];
     this.tarefas = [];
   }
+
+  cadastrarUsuario(nome, email) {
+    validarUsuario(nome, email);
+    const id = this.usuarios.length + 1;
+    const novoUsuario = new Usuario(id, nome, email);
+    this.usuarios.push(novoUsuario);
+    return novoUsuario;
+  }
+
+  cadastrarTarefa(titulo, descricao, usuarioId) {
+    validarTarefa(titulo, descricao);
+    const usuario = this.usuarios.find(u => u.id === Number(usuarioId));
+    if (!usuario) {
+      throw new Error("❌ Usuário não encontrado!");
+    }
+    const id = this.tarefas.length + 1;
+    const novaTarefa = new Tarefa(id, titulo, descricao, Number(usuarioId));
+    this.tarefas.push(novaTarefa);
+    return novaTarefa;
+  }
+
+  
 
 }
