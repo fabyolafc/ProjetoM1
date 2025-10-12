@@ -46,4 +46,14 @@ export class Gerenciador {
     }
   }
 
+  buscarUsuarioId(id) {
+    return this.usuarios.find(u => u.id === Number(id)) || null;
+  }
+
+  buscarTarefaId(id) {
+    return this.tarefas.find(t => t.id === Number(id)) || null;
+  }
+
 }
+
+

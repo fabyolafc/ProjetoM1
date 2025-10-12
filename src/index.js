@@ -8,6 +8,40 @@ const rl = readline.createInterface({
 
 const gerenciador = new Gerenciador();
 
+function buscarUsuarioTarefa() {
+  console.log(`
+=== BUSCAR POR ID ===
+1. Buscar Usuário por ID
+2. Buscar Tarefa por ID
+  `);
+  rl.question("Escolha uma opção: ", (tipo) => {
+    if (tipo === '1') {
+      rl.question("Digite o ID do usuário: ", (id) => {
+        const usuario = gerenciador.buscarUsuarioId(id);
+        if (usuario) {
+          console.log(`ID: ${usuario.id} | Nome: ${usuario.nome} | Email: ${usuario.email}`);
+        } else {
+          console.log("❌ Usuário não encontrado!");
+        }
+        mostrarMenu();
+      })
+    } else if (tipo === '2') {
+      rl.question("Digite o ID da tarefa: ", (id) => {
+        const tarefa = gerenciador.buscarTarefaId(id);
+        if(tarefa) {
+          console.log(`ID: ${tarefa.id} | Título: ${tarefa.titulo} | Descrição: ${tarefa.descricao} | Usuário ID: ${tarefa.usuarioId}`);
+        } else {
+          console.log("❌ Tarefa não encontrada!");
+        }
+        mostrarMenu();
+      })
+    } else {
+      console.log("❌ Opção inválida!");
+      mostrarMenu();
+    }
+  })
+}
+
 function mostrarMenu() {
   console.log(`
 ==========================
@@ -17,7 +51,7 @@ function mostrarMenu() {
 2. Cadastrar tarefas
 3. Listar usuários cadastrados
 4. Listar tarefas cadastradas
-5. Buscar itens específicos (por nome ou ID) 
+5. Buscar itens usuário e tarefa
 6. Alterar estado da tarefa (ex.: marcar como concluída)  
 7. Sair
   `);
@@ -67,8 +101,7 @@ function mostrarMenu() {
         break;
 
       case '5':
-        console.log('🔍 Função de busca ainda será implementada.');
-        mostrarMenu();
+          buscarUsuarioTarefa();
         break;
 
       case '6':
