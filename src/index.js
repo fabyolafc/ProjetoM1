@@ -1,4 +1,5 @@
 import { Gerenciador } from './controllers/Sistema.js';
+import { Tarefa } from './models/Tarefa.js';
 import readline from 'readline';
 
 const rl = readline.createInterface({
@@ -7,6 +8,7 @@ const rl = readline.createInterface({
 });
 
 const gerenciador = new Gerenciador();
+const tarefas = new Tarefa();
 
 function buscarUsuarioTarefa() {
   console.log(`
@@ -52,7 +54,7 @@ function mostrarMenu() {
 3. Listar usuários cadastrados
 4. Listar tarefas cadastradas
 5. Buscar itens usuário e tarefa
-6. Alterar estado da tarefa (ex.: marcar como concluída)  
+6. Marcar tarefa como concluída 
 7. Sair
   `);
 
@@ -105,8 +107,7 @@ function mostrarMenu() {
         break;
 
       case '6':
-        console.log('⚙️ Função de alterar estado ainda será implementada.');
-        mostrarMenu();
+        
         break;
 
       case '7':

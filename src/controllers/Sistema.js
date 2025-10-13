@@ -42,7 +42,7 @@ export class Gerenciador {
     if (this.tarefas.length === 0) {
       console.log('Nenhuma tarefa cadastrada.');
     } else {
-      this.tarefas.forEach(t => console.log(`ID: ${t.id} | Título: ${t.titulo} | Usuário ID: ${t.usuarioId}`));
+      this.tarefas.forEach(t => console.log(`ID: ${t.id} | Título: ${t.titulo} | Descrição ${t.descricao} | Usuário ID: ${t.usuarioId} | Status: ${t.status}`));
     }
   }
 
