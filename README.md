@@ -7,7 +7,8 @@ O sistema simula um **Gerenciador de Tarefas**, permitindo cadastrar, listar, bu
 ---
 
 ## 🚀 Funcionalidades
-- Cadastrar Usuários e Tarefas  
+- Cadastrar Usuários e Tarefas
+- Deletar Usuários e Tarefas  
 - Listar todos os usuários e tarefas cadastrados  
 - Buscar itens específicos (por nome ou ID)  
 - Alterar estado da tarefa (ex.: marcar como concluída)  
