@@ -46,15 +46,21 @@ function buscarUsuarioTarefa() {
 
 function mostrarMenu() {
   console.log(`
-==========================
-   GERENCIADOR DE TAREFAS
-==========================
+==============================
+  📚 GERENCIADOR DE TAREFAS
+==============================
 1. Cadastrar usuários
+
 2. Cadastrar tarefas
+
 3. Listar usuários cadastrados
+
 4. Listar tarefas cadastradas
+
 5. Buscar itens usuário e tarefa
+
 6. Marcar tarefa como concluída 
+
 7. Sair
   `);
 
@@ -107,7 +113,16 @@ function mostrarMenu() {
         break;
 
       case '6':
-        
+        rl.question("Digite o ID da tarefa que deseja marcar como concluída: ", ((id) => {
+          const tarefa = gerenciador.buscarTarefaId(id);
+          if(tarefa) {
+            tarefa.marcarComoConcluida();
+            console.log("✅ Tarefa marcada como concluída!");
+          } else {
+            console.log("❌ Tarefa não encontrada!");
+          }
+          mostrarMenu();
+        }))
         break;
 
       case '7':
