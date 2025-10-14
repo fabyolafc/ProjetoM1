@@ -54,6 +54,32 @@ export class Gerenciador {
     return this.tarefas.find(t => t.id === Number(id)) || null;
   }
 
+  deletarUsuario(id) {
+    const indice = this.usuarios.findIndex(u => u.id === Number(id));
+    if (indice !== -1) {
+      this.usuarios.splice(indice, 1);
+      // Também remove as tarefas associadas ao usuário
+      this.tarefas = this.tarefas.filter(t => t.usuarioId !== Number(id));
+      console.log(`✅ Usuário com ID ${id} deletado com sucesso!`);
+      return true;
+    } else {
+      console.log(`❌ Usuário com ID ${id} não encontrado.`);
+      return false;
+    }
+  }
+
+  deletarTarefa(id) {
+    const indice = this.tarefas.findIndex(t => t.id === Number(id));
+    if(indice !== -1) {
+      this.tarefas.splice(indice, 1);
+      console.log(`✅ Tarefa com ID ${id} deletada com sucesso!`);
+      return true;
+    } else {
+      console.log(`❌ Tarefa com ID ${id} não encontrada.`);
+      return false;
+    }
+  }
+
 }
 
 

@@ -44,25 +44,44 @@ function buscarUsuarioTarefa() {
   })
 }
 
+function deletarUsuarioTarefa() {
+  console.log(`
+=== DELETAR POR ID ===
+1. Deletar Usuário por ID
+2. Deletar Tarefa por ID
+  `);
+  rl.question("Escolha uma opção: ", (tipo) => {
+    if (tipo === '1') {
+      rl.question("Digite o ID do usuário que deseja deletar: ", (id) => {
+        const usuario = gerenciador.deletarUsuario(id);
+        mostrarMenu();
+      });
+    } else if (tipo === '2') {
+      rl.question("Digite o ID da tarefa que deseja deletar: ", (id) => {
+        const tarefa = gerenciador.deletarTarefa(id);
+        mostrarMenu();
+      });
+    } else {
+      console.log("❌ Opção inválida!");
+      mostrarMenu();
+    }
+  });
+}
+
 function mostrarMenu() {
   console.log(`
 ==============================
   📚 GERENCIADOR DE TAREFAS
 ==============================
 1. Cadastrar usuários
-
 2. Cadastrar tarefas
-
 3. Listar usuários cadastrados
-
 4. Listar tarefas cadastradas
-
-5. Buscar itens usuário e tarefa
-
+5. Buscar itens (usuário ou tarefa)
 6. Marcar tarefa como concluída 
-
-7. Sair
-  `);
+7. Deletar (usuário ou tarefa)
+8. Sair
+`);
 
   rl.question('Escolha uma opção: ', (opcao) => {
     switch (opcao) {
@@ -78,7 +97,7 @@ function mostrarMenu() {
             mostrarMenu();
           });
         });
-        break;
+      break;
 
       case '2':
         gerenciador.listarUsuarios();
@@ -96,21 +115,21 @@ function mostrarMenu() {
             });
           });
         });
-        break;
+      break;
 
       case '3':
         gerenciador.listarUsuarios();
         mostrarMenu();
-        break;
+      break;
 
       case '4':
         gerenciador.listarTarefas();
         mostrarMenu();
-        break;
+      break;
 
       case '5':
           buscarUsuarioTarefa();
-        break;
+      break;
 
       case '6':
         rl.question("Digite o ID da tarefa que deseja marcar como concluída: ", ((id) => {
@@ -123,12 +142,16 @@ function mostrarMenu() {
           }
           mostrarMenu();
         }))
-        break;
+      break;
 
       case '7':
+          deletarUsuarioTarefa();
+      break;
+
+      case '8':
         console.log('👋 Volte Sempre!');
         rl.close();
-        break;
+      break;
 
       default:
         console.log('❌ Opção inválida!');
